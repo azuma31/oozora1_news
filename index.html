@@ -1,11 +1,36 @@
 ﻿<!DOCTYPE html>
 <html>
-<head><title>おおぞら１組ニュース</title></head>
+<head><title>おおぞら１組ニュース</title>
+<script>
+    function scheduleNotification() {
+      var now = new Date();
+      var targetTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0, 0); // 毎日の正午
+      var timeUntilNotification = targetTime - now;
+
+      if (timeUntilNotification > 0) {
+        setTimeout(function () {
+          if ('Notification' in window) {
+            Notification.requestPermission().then(function(permission) {
+              if (permission === 'granted') {
+                var options = {
+                  body: '最新のニュースです',
+                  icon: 'icon.png'
+                };
+                var notification = new Notification('昼の12時通知', options);
+              }
+            });
+          }
+        }, timeUntilNotification);
+      }
+    }
+
+    scheduleNotification();
+    </script>
 <body>
     <style>
         .晴れ{
             color: orange;
-        } 
+        }
         .雨{
             color: cyan;
         }
@@ -29,11 +54,12 @@
         }
     </style>
 </body>
+    </head>
 <center>
     <div class="ロゴ">
 <img src="img/cn1.png" />
     </div>
-    <h1>トップニュース</h1>
+    <h1>8/28本日のトップニュース</h1>
        <h2>本日のニュース</h2>
     </div>
     <h2></h2>
