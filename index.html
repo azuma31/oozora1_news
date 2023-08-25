@@ -1,35 +1,67 @@
 ﻿<!DOCTYPE html>
 <html>
-<head><title>おおぞら１組ニュース</title>
-<body>
-    <style>
-        .晴れ{
-            color: orange;
-        }
-        .雨{
-            color: cyan;
-        }
-        .大雨{
-            color: blue;
-        }
-        .晴天{
-            color: red;
-        }
-        .雷雨{
-            color: yellow
-        }
-        .曇り{
-            color: gray;
-        }
-    </style>
-    <style>
-        .ロゴ img {
-            width: 200px; /* 新しい幅を指定 */
-            height: auto; /* 高さは自動調整 */
-        }
-    </style>
-</body>
-    </head>
+<head>
+    <title>おおぞら１組ニュース</title>
+    <script>
+        // 現在の時刻を取得
+        var now = new Date();
+
+        // 正午12時の時刻を設定
+        var noon = new Date(now);
+        noon.setHours(12, 0, 0, 0); // 時間を12時に、分と秒を0に設定
+
+        // 現在時刻と正午12時との差を計算
+        var timeUntilNoon = noon - now;
+
+        // setTimeoutを使用して、正午12時にコードを実行
+        setTimeout(function () {
+            // ユーザーアクションに紐づけてプッシュ通知を表示
+            if (Notification.permission === "granted") {
+                var n = new Notification("新着のニュースがあります");
+            } else if (Notification.permission !== "denied") {
+                Notification.requestPermission().then(function (permission) {
+                    if (permission === "granted") {
+                        var n = new Notification("新着のニュースがあります");
+                    }
+                });
+            }
+        }, timeUntilNoon);
+    </script>
+
+    <body>
+        <style>
+            .晴れ {
+                color: orange;
+            }
+
+            .雨 {
+                color: cyan;
+            }
+
+            .大雨 {
+                color: blue;
+            }
+
+            .晴天 {
+                color: red;
+            }
+
+            .雷雨 {
+                color: yellow
+            }
+
+            .曇り {
+                color: gray;
+            }
+        </style>
+        <style>
+            .ロゴ img {
+                width: 200px; /* 新しい幅を指定 */
+                height: auto; /* 高さは自動調整 */
+            }
+        </style>
+    </body>
+</head>
 <center>
     <div class="ロゴ">
 <img src="img/cn1.png" />
