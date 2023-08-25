@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿﻿
+<!DOCTYPE html>
 <html>
 <head>
     <title>おおぞら１組ニュース</title>
@@ -13,20 +14,28 @@
         // 現在時刻と正午12時との差を計算
         var timeUntilNoon = noon - now;
 
+        // アイコンのURLを設定
+        var iconUrl = "img/cn1.png"; // ここに実際の画像ファイルのURLを指定
+
         // setTimeoutを使用して、正午12時にコードを実行
         setTimeout(function () {
             // ユーザーアクションに紐づけてプッシュ通知を表示
             if (Notification.permission === "granted") {
-                var n = new Notification("新着のニュースがあります");
+                var n = new Notification("新着のニュースがあります", {
+                    icon: iconUrl // アイコンのURLを指定
+                });
             } else if (Notification.permission !== "denied") {
                 Notification.requestPermission().then(function (permission) {
                     if (permission === "granted") {
-                        var n = new Notification("新着のニュースがあります");
+                        var n = new Notification("新着のニュースがあります", {
+                            icon: iconUrl // アイコンのURLを指定
+                        });
                     }
                 });
             }
         }, timeUntilNoon);
     </script>
+
 
     <body>
         <style>
@@ -59,19 +68,20 @@
                 width: 200px; /* 新しい幅を指定 */
                 height: auto; /* 高さは自動調整 */
             }
+
             .ページ移動 button {
-  width: 10em;
-  height:3em;
-}
+                width: 10em;
+                height: 3em;
+            }
         </style>
     </body>
 </head>
 <center>
     <div class="ロゴ">
-<img src="img/cn1.png" />
+        <img src="img/cn1.png" />
     </div>
     <h1>8/28本日のトップニュース</h1>
-       <h2>見出し</h2>
+    <h2>見出し</h2>
     </div>
     <h2></h2>
     <p>文章</p>
@@ -102,15 +112,21 @@
     <h1>明日の天気予報</h1>
     <br />
     <h2>明日の中昼休みの天気は</h2>
-    <h3>中休み
-    <div class="雨">雨</div></h3>
-    <p><h3>昼休み
-    <div class="曇り">曇りだが外に行けない</div></h3></p>
+    <h3>
+        中休み
+        <div class="雨">雨</div>
+    </h3>
+    <p>
+        <h3>
+            昼休み
+            <div class="曇り">曇りだが外に行けない</div>
+        </h3>
+    </p>
     <br />
     <h2>あすの帰りは曇りになるでしょう</h2>
     <br />
     <div class="ページ移動">
-<button onclick="window.location.href='index.html'">ホームページ</button>　<button onclick="window.location.href='イベント.html'">イベント情報</button>　<button onclick="window.location.href='平和.html'">治安　情報</button><h6>　　</h6>
-        </div>
-    </center>
+        <button onclick="window.location.href='index.html'">ホームページ</button>　<button onclick="window.location.href='イベント.html'">イベント情報</button>　<button onclick="window.location.href='平和.html'">治安　情報</button><h6>　　</h6>
+    </div>
+</center>
 </html>
