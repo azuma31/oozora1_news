@@ -21,13 +21,13 @@
         setTimeout(function () {
             // ユーザーアクションに紐づけてプッシュ通知を表示
             if (Notification.permission === "granted") {
-                var n = new Notification("新着のニュースがあります", {
+                var n = new Notification("今日のニュースです", {
                     icon: iconUrl // アイコンのURLを指定
                 });
             } else if (Notification.permission !== "denied") {
                 Notification.requestPermission().then(function (permission) {
                     if (permission === "granted") {
-                        var n = new Notification("新着のニュースがあります", {
+                        var n = new Notification("今日のニュースです", {
                             icon: iconUrl // アイコンのURLを指定
                         });
                     }
@@ -35,6 +35,7 @@
             }
         }, timeUntilNoon);
     </script>
+
 
 
     <body>
@@ -73,18 +74,22 @@
                 width: 10em;
                 height: 3em;
             }
-            .トップニュース{
+
+            .トップニュース {
                 color: orange;
             }
-            .ネクストニュース{
-                color:gray;
+
+            .ネクストニュース {
+                color: gray;
             }
-            .クラス治安{
+
+            .クラス治安 {
                 color: white;
                 background-color: gray;
             }
-            .天気{
-                color:orange;
+
+            .天気 {
+                color: orange;
             }
         </style>
     </body>
@@ -93,7 +98,7 @@
     <div class="ロゴ">
         <img src="img/cn1.png" />
     </div>
-    <h1>8/28本日のトップニュース</h1>
+    <h1>8/29本日のトップニュース</h1>
     <div class="トップニュース">
         <h2>見出し</h2>
     </div>
@@ -124,9 +129,7 @@
         <h1>本日のクラス治安度調査</h1>
         <h1>クラス治安度(高いほど治安が悪い)　</h1>
         <h1>50%</h1>
-        <h2>今日の正当でない暴行・悪口記録</h2>
-        <p>(例)a君何時何分ごろb君に暴力を振るう</p>
-        <p>文章</p>
+        <h2>今日一番人に危害を加えていたのはa君です</h2>
         <br />
         <p>※目安として悪口や暴力が判断されます(正当であるものを除く)ただし理由がある場合はよし</p>
         <br />
