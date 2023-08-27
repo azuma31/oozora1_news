@@ -3,30 +3,6 @@
 <html>
 <head>
     <title>おおぞら１組ニュース</title>
-    <script>
-        // 現在の時刻を取得
-        var currentTime = new Date();
-
-        // 目標時刻を設定（12:00）
-        var targetTime = new Date(currentTime);
-        targetTime.setHours(12);
-        targetTime.setMinutes(0);
-        targetTime.setSeconds(0);
-
-        // 目標時刻との差を計算
-        var timeDiff = targetTime - currentTime;
-
-        // タイマーを設定して通知を表示
-        setTimeout(function () {
-            // 通知を表示
-            if (Notification.permission === "granted") {
-                new Notification("お知らせ", {
-                    body: "新着ニュースがあります",
-                    image: "cn1.png",
-                });
-            }
-        }, timeDiff);
-    </script>
     <body>
         <style>
             .晴れ {
