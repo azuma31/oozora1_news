@@ -92,8 +92,8 @@
     <br />
     <br />
     <div class="天気">
-    <h1>明日の天気予報🌤</h1>
-        </div>
+        <h1>明日の天気予報🌤</h1>
+    </div>
     <br />
     <h2>明日の中昼休みの天気は</h2>
     <h3>
@@ -111,6 +111,34 @@
     <br />
     <div class="ページ移動">
         <button onclick="window.location.href='index.html'">ホームページ</button>　<button onclick="window.location.href='イベント.html'">イベント情報</button>　<button onclick="window.location.href='昨日のニュース.html'">昨日のニュース</button>
-    </div>
+    <br />
+    <br />
+    <button onclick="window.location.href='https://scratch.mit.edu/projects/886376531/'">コード入力画面</button>
+        </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <script>
+        function toggleCodeVisibility() {
+            var codeElement = document.getElementById("code");
+            if (codeElement.style.display === "none") {
+                codeElement.style.display = "block";
+            } else {
+                codeElement.style.display = "none";
+            }
+        }
+    </script>
+    </head>
+    <body>
+        <p><a href="javascript:void(0);" onclick="toggleCodeVisibility();">今日のコードを表示する</a></p>
+        <pre id="code" style="display: none;">
+        <code>
+<h2>5233</h2>
+    </code>
+  </pre>
+    </body>
 </center>
 </html>
