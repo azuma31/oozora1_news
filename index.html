@@ -17,17 +17,20 @@
         // アイコンのURLを設定
         var iconUrl = "img/cn1.png"; // ここに実際の画像ファイルのURLを指定
 
+        // プッシュ通知のテキスト
+        var text = "今日のニュースです";
+
         // setTimeoutを使用して、正午12時にコードを実行
         setTimeout(function () {
             // ユーザーアクションに紐づけてプッシュ通知を表示
             if (Notification.permission === "granted") {
-                var n = new Notification("今日のニュースです", {
+                var n = new Notification(text, {
                     icon: iconUrl // アイコンのURLを指定
                 });
             } else if (Notification.permission !== "denied") {
                 Notification.requestPermission().then(function (permission) {
                     if (permission === "granted") {
-                        var n = new Notification("今日のニュースです", {
+                        var n = new Notification(text, {
                             icon: iconUrl // アイコンのURLを指定
                         });
                     }
@@ -35,9 +38,6 @@
             }
         }, timeUntilNoon);
     </script>
-
-
-
     <body>
         <style>
             .晴れ {
