@@ -5,38 +5,27 @@
     <title>おおぞら１組ニュース</title>
     <script>
         // 現在の時刻を取得
-        var now = new Date();
+        var currentTime = new Date();
 
-        // 正午12時の時刻を設定
-        var noon = new Date(now);
-        noon.setHours(12, 0, 0, 0); // 時間を12時に、分と秒を0に設定
+        // 目標時刻を設定（12:00）
+        var targetTime = new Date(currentTime);
+        targetTime.setHours(12);
+        targetTime.setMinutes(0);
+        targetTime.setSeconds(0);
 
-        // 現在時刻と正午12時との差を計算
-        var timeUntilNoon = noon - now;
+        // 目標時刻との差を計算
+        var timeDiff = targetTime - currentTime;
 
-        // アイコンのURLを設定
-        var iconUrl = "img/cn1.png"; // ここに実際の画像ファイルのURLを指定
-
-        // プッシュ通知のテキスト
-        var text = "今日のニュースです";
-
-        // setTimeoutを使用して、正午12時にコードを実行
+        // タイマーを設定して通知を表示
         setTimeout(function () {
-            // ユーザーアクションに紐づけてプッシュ通知を表示
+            // 通知を表示
             if (Notification.permission === "granted") {
-                var n = new Notification(text, {
-                    icon: iconUrl // アイコンのURLを指定
-                });
-            } else if (Notification.permission !== "denied") {
-                Notification.requestPermission().then(function (permission) {
-                    if (permission === "granted") {
-                        var n = new Notification(text, {
-                            icon: iconUrl // アイコンのURLを指定
-                        });
-                    }
+                new Notification("お知らせ", {
+                    body: "新着ニュースがあります",
+                    image: "cn1.png",
                 });
             }
-        }, timeUntilNoon);
+        }, timeDiff);
     </script>
     <body>
         <style>
