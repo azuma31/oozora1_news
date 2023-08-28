@@ -111,34 +111,85 @@
     <br />
     <div class="ページ移動">
         <button onclick="window.location.href='index.html'">ホームページ</button>　<button onclick="window.location.href='イベント.html'">イベント情報</button>　<button onclick="window.location.href='昨日のニュース.html'">昨日のニュース</button>
+        <br />
+        <br />
+        <br />
+        <br />
+        <button onclick="window.location.href='https://scratch.mit.edu/projects/886376531/fullscreen/'">コード入力画面</button>
+    </div>
     <br />
     <br />
-    <button onclick="window.location.href='https://scratch.mit.edu/projects/886376531/'">コード入力画面</button>
-        </div>
     <br />
     <br />
     <br />
     <br />
-    <br />
-    <br />
-    <script>
-        function toggleCodeVisibility() {
-            var codeElement = document.getElementById("code");
-            if (codeElement.style.display === "none") {
-                codeElement.style.display = "block";
-            } else {
-                codeElement.style.display = "none";
-            }
+    <style>
+        #progress {
+            width: 100%;
+            background-color: #f2f2f2;
         }
-    </script>
+
+        #bar {
+            width: 100%;
+            height: 30px;
+            background-color: #4caf50;
+            text-align: center;
+            line-height: 30px;
+            color: white;
+            transition: width 0.2s;
+        }
+    </style>
     </head>
     <body>
-        <p><a href="javascript:void(0);" onclick="toggleCodeVisibility();">今日のコードを表示する</a></p>
-        <pre id="code" style="display: none;">
-        <code>
-<h2>5233</h2>
-    </code>
-  </pre>
-    </body>
+        <div id="progress">
+            <div id="bar">30 秒</div>
+        </div>
+        <h2>0秒になったらコードが表示されます　それまでニュースを見ていてください</h2>
+        <script>
+            var totalSeconds = 30;
+
+            function updateProgressBar() {
+                var barElement = document.getElementById("bar");
+                var progress = (totalSeconds / 30) * 100;
+                barElement.style.width = progress + "%";
+                barElement.textContent = totalSeconds + " 秒";
+
+                if (totalSeconds === 0) {
+                    clearInterval(interval);
+                    barElement.textContent = "時間切れ！";
+                    document.getElementById("progress").style.display = "none"; // プログレスバーを非表示にする
+                } else {
+                    totalSeconds--;
+                }
+            }
+
+            var interval = setInterval(updateProgressBar, 1000);
+        </script>
+        <script>
+            function toggleCodeVisibility() {
+                var codeElement = document.getElementById("code");
+                if (codeElement.style.display === "none") {
+                    codeElement.style.display = "block";
+                } else {
+                    codeElement.style.display = "none";
+                }
+            }
+
+            document.addEventListener("DOMContentLoaded", function () {
+                setTimeout(function () {
+                    var linkElement = document.getElementById("toggleLink");
+                    linkElement.style.display = "inline";
+                }, 30000); // 30 seconds
+            });
+        </script>
+        </head>
+        <body>
+            <p><a id="toggleLink" href="javascript:void(0);" onclick="toggleCodeVisibility();" style="display: none;">今日のコードを表示する</a></p>
+            <pre id="code" style="display: none;">
+            <code>
+<h2>5133</h2>
+        </code>
+    </pre>
+        </body>
 </center>
 </html>
